@@ -1,0 +1,6 @@
+ansible_client1 ansible_host=192.168.77.111 ansible_connection=ssh ansible_user=osboxes ansible_ssh_pass=osboxes.org
+ansible_client2 ansible_host=192.168.77.100 ansible_connection=ssh ansible_user=osboxes ansible_ssh_pass=osboxes.org
+
+[all]
+ansible_client1
+ansible_client2

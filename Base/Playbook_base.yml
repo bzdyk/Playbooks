@@ -1,0 +1,5 @@
+-
+    name: 'Base'
+    hosts: ansible_client1 , ansible_client2
+    roles:
+      - base

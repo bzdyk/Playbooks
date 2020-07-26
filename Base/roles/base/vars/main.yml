@@ -1,0 +1,5 @@
+packages:
+    - mc
+    - chrony
+    - sudo
+    - unattended-upgrades

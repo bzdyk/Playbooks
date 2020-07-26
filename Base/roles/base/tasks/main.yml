@@ -1,0 +1,42 @@
+  -
+      name: Install required packages {{item.name}}" 1 on Debian
+      apt:
+       name: '{{item}}'
+       state: present
+      with_items: '{{packages}}'
+       # and ansible_distribution_version =="16.04"
+
+  -
+      name: 'Install required packages 1 on RedHat'
+      apt:
+        name: '{{item}}'
+        state: present
+      loop: '{{packages}}'
+      when: ansible_os_family == "Redhat" or
+            ansible_os_family == "SUSE"
+
+  -
+      name: Start chronyd
+      service:
+       name: chronyd
+       state: started
+       enabled: yes
+
+  -
+      name: 'Install required packages 2'
+      apt: name={{ item }} state=present
+      with_items:
+       - python
+       - python-setuptools
+       - python-dev
+       - build-essential
+       - python-pip
+       - python-mysqldb
+
+  -
+      name: 'Disallow root SSH access'
+      lineinfile: dest=/etc/ssh/sshd_config
+                  regexp="^PermitRootLogin"
+                  line="PermitRootLogin no"
+                  state=present
+      notify: restart ssh

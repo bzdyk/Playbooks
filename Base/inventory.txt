@@ -1,0 +1,6 @@
+ansible_client1
+ansible_client2
+
+[all]
+ansible_client1
+ansible_client2
