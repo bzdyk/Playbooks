@@ -1,0 +1,15 @@
+-
+        name: Sprawdzenie polaczenia
+        hosts: all
+        tasks:
+           - name: Ping test
+             ping:
+-
+    name: Get filename
+    hosts: all
+    vars:
+     file_path: /etc/hosts
+    tasks:
+    - name: Get filename
+      debug:
+        msg: File Name = {{file_path | basename }}
